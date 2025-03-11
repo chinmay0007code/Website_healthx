@@ -3,35 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthX - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>HealthX - AI-Powered Health Assistant</title>
+
+    <!-- CSS Code Inside <style> -->
+    <style>
+        /* General Styles */
+        body {
+            background-color: white; /* Set background to white */
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            margin: 40px 0;
+        }
+
+        .highlight {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="logo">HealthX</div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="signup.html">Sign Up</a>
-            <a href="login.html">Login</a>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
+    <!-- Header Section -->
+    <header>
+        <h1>HealthX</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <!-- Welcome Section -->
+    <section class="welcome">
         <h1>Welcome to <span class="highlight">HealthX</span></h1>
         <p>Your AI-Powered Health Assistant</p>
-        <div class="buttons">
-            <button onclick="location.href='chatbot.html'">Chat with AI</button>
-            <button onclick="location.href='medical_report.html'">Medical Report</button>
-        </div>
-    </header>
+
+        <!-- Buttons -->
+        <button onclick="chatWithAI()">Chat with AI</button>
+        <button onclick="viewMedicalReport()">Medical Report</button>
+    </section>
 
     <!-- Footer -->
     <footer>
         <p>© 2024 HealthX. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript Code Inside <script> -->
+    <script>
+        function chatWithAI() {
+            alert("Chat feature coming soon! Stay tuned.");
+        }
+
+        function viewMedicalReport() {
+            alert("Medical Report feature coming soon!");
+        }
+    </script>
+
 </body>
 </html>
