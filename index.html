@@ -12,6 +12,9 @@
             padding: 0;
             background-color: #f0f0f0;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Navigation Bar */
@@ -35,7 +38,11 @@
             text-decoration: none;
         }
 
-        /* Welcome Section */
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+        }
+
         .welcome-section {
             margin-top: 50px;
         }
@@ -65,9 +72,8 @@
             max-width: 300px;
         }
 
-        /* Contact Us Section (Now at the Bottom) */
+        /* Contact Us Section (Placed Above Footer) */
         .contact {
-            margin-top: 30px;
             padding: 15px;
             background: white;
             color: #555;
@@ -75,8 +81,7 @@
             border-radius: 8px;
             width: 90%;
             max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 20px auto;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -91,9 +96,7 @@
             background-color: #007bff;
             padding: 10px;
             color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            text-align: center;
         }
 
     </style>
@@ -108,18 +111,20 @@
         <a href="#">Login</a>
     </div>
 
-    <!-- Welcome Section -->
-    <div class="welcome-section">
-        <h2>Welcome to <span class="highlight">HealthX</span></h2>
-        <p>Your AI-Powered Health Assistant</p>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="welcome-section">
+            <h2>Welcome to <span class="highlight">HealthX</span></h2>
+            <p>Your AI-Powered Health Assistant</p>
 
-        <div class="buttons">
-            <button class="btn">Chat with AI</button>
-            <button class="btn">Medical Report</button>
+            <div class="buttons">
+                <button class="btn">Chat with AI</button>
+                <button class="btn">Medical Report</button>
+            </div>
         </div>
     </div>
 
-    <!-- Styled Contact Us Section -->
+    <!-- Styled Contact Us Section (Now Just Above Footer) -->
     <div class="contact">
         Contact us: <a href="mailto:healthX028@gmail.com">healthX028@gmail.com</a>
     </div>
