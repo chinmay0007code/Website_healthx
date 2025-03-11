@@ -1,30 +1,11 @@
-/* Reset styles */
-* {
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Light & Dark Mode Variables */
-:root {
-    --primary-color: #007bff;
-    --background-color: #f5f5f5;
-    --text-color: #000;
-    --button-hover: #0056b3;
-}
-
-.dark-mode {
-    --background-color: #121212;
-    --text-color: #ffffff;
-}
-
-/* Body */
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
     text-align: center;
-    transition: 0.3s;
+    background-color: #121212;
+    color: #fff;
 }
 
 /* Navbar */
@@ -32,75 +13,71 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: #007bff;
+    padding: 15px 20px;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
 }
 
 .nav-links a {
-    color: white;
     text-decoration: none;
-    margin: 0 15px;
+    color: white;
     font-size: 18px;
 }
 
-.nav-links a:hover {
-    text-decoration: underline;
-}
-
-/* Theme Toggle Button */
 #theme-toggle {
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 24px;
     cursor: pointer;
+    color: white;
 }
 
 /* Hero Section */
 .hero {
-    margin: 50px auto;
-    padding: 50px;
+    margin-top: 50px;
 }
 
-.hero h1 {
-    font-size: 40px;
+h1 {
+    font-size: 36px;
 }
 
 .highlight {
-    color: var(--primary-color);
+    color: #007bff;
 }
 
-.hero p {
-    font-size: 20px;
-    margin: 10px 0;
+.buttons {
+    margin-top: 20px;
 }
 
-/* Buttons */
-.buttons button {
-    margin: 10px;
-    padding: 12px 20px;
-    font-size: 18px;
-    border: none;
+button {
+    background-color: #007bff;
     color: white;
-    background-color: var(--primary-color);
-    border-radius: 8px;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.buttons button:hover {
-    background-color: var(--button-hover);
+button:hover {
+    background-color: #0056b3;
 }
 
 /* Footer */
 footer {
-    background: var(--primary-color);
+    margin-top: 50px;
+    padding: 10px;
+    background-color: #007bff;
     color: white;
-    padding: 15px;
-    margin-top: 30px;
 }
