@@ -11,22 +11,25 @@ body {
 /* Navbar */
 .navbar {
     display: flex;
-    flex-direction: column;  /* Stack items vertically */
-    align-items: center;     /* Center the content */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center content */
     background-color: #007bff;
     padding: 15px 20px;
+    position: relative;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
     color: white;
-    margin-bottom: 5px;  /* Add space between logo and links */
+    margin-bottom: 10px; /* Space between logo and nav links */
 }
 
 .nav-links {
     display: flex;
-    gap: 15px;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
 }
 
 .nav-links a {
@@ -47,31 +50,6 @@ body {
     color: white;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-}
-
-.nav-links {
-    display: flex;
-    gap: 15px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-}
-
-#theme-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-}
-
 /* Hero Section */
 .hero {
     margin-top: 50px;
@@ -82,7 +60,7 @@ h1 {
 }
 
 .highlight {
-    color: #007bff;
+    color: #ffd700; /* Changed to gold for better visibility */
 }
 
 .buttons {
