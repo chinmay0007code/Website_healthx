@@ -1,16 +1,17 @@
-/* Reset default styles */
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Light & Dark Mode Variables */
 :root {
     --primary-color: #007bff;
-    --background-color: #ffffff;
-    --text-color: #000000;
+    --background-color: #f5f5f5;
+    --text-color: #000;
+    --button-hover: #0056b3;
 }
 
 .dark-mode {
@@ -18,12 +19,12 @@
     --text-color: #ffffff;
 }
 
-/* Body Styling */
+/* Body */
 body {
     background-color: var(--background-color);
     color: var(--text-color);
     text-align: center;
-    transition: background 0.3s, color 0.3s;
+    transition: 0.3s;
 }
 
 /* Navbar */
@@ -70,6 +71,10 @@ body {
     font-size: 40px;
 }
 
+.highlight {
+    color: var(--primary-color);
+}
+
 .hero p {
     font-size: 20px;
     margin: 10px 0;
@@ -78,18 +83,18 @@ body {
 /* Buttons */
 .buttons button {
     margin: 10px;
-    padding: 15px 25px;
+    padding: 12px 20px;
     font-size: 18px;
     border: none;
     color: white;
     background-color: var(--primary-color);
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .buttons button:hover {
-    background-color: #0056b3;
+    background-color: var(--button-hover);
 }
 
 /* Footer */
@@ -97,7 +102,5 @@ footer {
     background: var(--primary-color);
     color: white;
     padding: 15px;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
+    margin-top: 30px;
 }
