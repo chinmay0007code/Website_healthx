@@ -9,18 +9,34 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="login.html">Login</a>
-        <a href="signup.html">Sign Up</a>
+        <div class="logo">HealthX</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="chatbot.html">Chatbot</a>
+            <a href="medical_report.html">Medical Report</a>
+            <a href="signup.html">Sign Up</a>
+            <a href="login.html">Login</a>
+        </div>
+        <button id="theme-toggle">🌙</button>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
+    <!-- Hero Section -->
+    <header class="hero">
         <h1>Welcome to HealthX</h1>
-        <button onclick="location.href='chatbot.html'">Chatbot</button>
-        <button onclick="location.href='medical_report.html'">Medical Report</button>
-        <button onclick="location.href='signup.html'">Sign Up</button>
-        <button onclick="location.href='login.html'">Login</button>
-    </div>
+        <p>Your AI-Powered Health Assistant</p>
+        <div class="buttons">
+            <button onclick="location.href='chatbot.html'">Chat with AI</button>
+            <button onclick="location.href='medical_report.html'">Medical Report</button>
+            <button onclick="location.href='signup.html'">Sign Up</button>
+            <button onclick="location.href='login.html'">Login</button>
+        </div>
+    </header>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 HealthX. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
