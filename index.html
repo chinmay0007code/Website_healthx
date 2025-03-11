@@ -13,12 +13,11 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Body and Layout */
+        /* Body Layout */
         html, body {
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             background-color: #f4f4f4;
         }
 
@@ -100,6 +99,14 @@
             padding: 15px;
             font-size: 16px;
             width: 100%;
+        }
+
+        /* Desktop-Specific Fix */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 50%;
+                margin: auto;
+            }
         }
     </style>
 </head>
