@@ -1,51 +1,103 @@
-/* Reset default margin and padding */
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
-/* Navigation Bar */
-.navbar {
-    background-color: #007bff;
-    padding: 15px;
+/* Light & Dark Mode Variables */
+:root {
+    --primary-color: #007bff;
+    --background-color: #ffffff;
+    --text-color: #000000;
+}
+
+.dark-mode {
+    --background-color: #121212;
+    --text-color: #ffffff;
+}
+
+/* Body Styling */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
     text-align: center;
+    transition: background 0.3s, color 0.3s;
 }
 
-.navbar a {
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--primary-color);
     color: white;
-    text-decoration: none;
-    padding: 15px 20px;
-    font-size: 18px;
+}
+
+.logo {
+    font-size: 24px;
     font-weight: bold;
 }
 
-.navbar a:hover {
-    background-color: #0056b3;
-    border-radius: 5px;
-}
-
-/* Center Content */
-.container {
-    text-align: center;
-    margin-top: 50px;
-}
-
-/* Button Styling */
-button {
-    display: block;
-    width: 250px;
-    margin: 10px auto;
-    padding: 15px;
-    font-size: 18px;
+.nav-links a {
     color: white;
-    background-color: #007bff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
     border: none;
-    border-radius: 5px;
+    font-size: 20px;
     cursor: pointer;
 }
 
-button:hover {
+/* Hero Section */
+.hero {
+    margin: 50px auto;
+    padding: 50px;
+}
+
+.hero h1 {
+    font-size: 40px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+/* Buttons */
+.buttons button {
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    color: white;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buttons button:hover {
     background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
