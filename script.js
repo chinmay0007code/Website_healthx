@@ -5,7 +5,7 @@ const body = document.body;
 // Check if theme is stored in local storage
 if (localStorage.getItem("theme") === "light") {
     body.classList.add("light-mode");
-    themeToggle.innerHTML = "🌙"; // Moon icon for dark mode
+    themeToggle.innerHTML = "☀️"; // Sun icon for light mode
 }
 
 // Toggle Theme on Click
@@ -13,11 +13,11 @@ themeToggle.addEventListener("click", () => {
     if (body.classList.contains("light-mode")) {
         body.classList.remove("light-mode");
         localStorage.setItem("theme", "dark");
-        themeToggle.innerHTML = "☀️"; // Sun icon for light mode
+        themeToggle.innerHTML = "🌙"; // Moon icon for dark mode
     } else {
         body.classList.add("light-mode");
         localStorage.setItem("theme", "light");
-        themeToggle.innerHTML = "🌙"; // Moon icon for dark mode
+        themeToggle.innerHTML = "☀️"; // Sun icon for light mode
     }
 });
 
@@ -35,6 +35,9 @@ lightModeStyles.innerHTML = `
     .light-mode button {
         background-color: #0056b3;
         color: white;
+    }
+    .light-mode #theme-toggle {
+        color: black; /* Ensures toggle button is visible in light mode */
     }
 `;
 document.head.appendChild(lightModeStyles);
