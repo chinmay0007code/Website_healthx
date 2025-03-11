@@ -1,52 +1,25 @@
-/* General Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Force White Background */
+html, body {
+    background-color: white !important;
+    color: black !important;
+    height: 100%;
+    width: 100%;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: white !important; /* Forces white background */
-    color: black !important; /* Ensures text is readable */
+/* Ensure all sections have white background */
+* {
+    background-color: transparent !important; /* Resets any forced black */
+}
+
+.main-section, .footer, .navbar {
+    background-color: white !important;
+    color: black !important;
 }
 
 /* Fix for Dark Mode Users */
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: white !important; /* Forces white background even in dark mode */
+    html, body {
+        background-color: white !important;
         color: black !important;
     }
-}
-
-/* Navbar */
-.navbar {
-    background-color: #007bff;
-    padding: 15px;
-    text-align: center;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* Main Section */
-.main-section {
-    background-color: white !important; /* Ensure the section is white */
-    color: black !important;
-    text-align: center;
-    padding: 50px 20px;
-}
-
-/* Footer */
-.footer {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    width: 100%;
 }
