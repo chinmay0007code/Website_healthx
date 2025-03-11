@@ -5,69 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthX</title>
     <style>
-        /* Reset Styles */
-        * {
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        /* Body */
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 100vh;
             background-color: #f0f0f0;
+            text-align: center;
         }
 
-        /* Navbar */
+        /* Navigation Bar */
         .navbar {
             background-color: #007bff;
-            color: white;
-            text-align: center;
             padding: 10px;
-            font-size: 18px;
+            color: white;
+            font-size: 20px;
             font-weight: bold;
         }
 
-        /* Navigation Links */
         .nav-links {
             display: flex;
             justify-content: center;
             gap: 20px;
-            padding: 10px;
-            background: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
         }
 
         .nav-links a {
-            text-decoration: none;
             color: black;
-            font-size: 16px;
+            text-decoration: none;
         }
 
-        /* Main Content */
-        .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* Welcome Section */
+        .welcome-section {
+            margin-top: 50px;
+        }
+
+        .highlight {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .beta-message {
+            font-size: 14px;
+            color: #555;
             text-align: center;
-            padding: 20px;
-            min-height: 60vh;
-        }
-
-        .container h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .container p {
-            font-size: 16px;
-            color: gray;
+            margin-top: 10px;
+            display: none; /* Hidden by default */
         }
 
         /* Buttons */
@@ -76,37 +59,29 @@
         }
 
         .btn {
-            display: block;
-            width: 200px;
-            padding: 10px;
-            margin: 10px auto;
-            font-size: 16px;
-            text-align: center;
+            background-color: #007bff;
             color: white;
-            background: #007bff;
+            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #0056b3;
+            margin: 5px;
+            border-radius: 5px;
         }
 
         /* Footer */
         .footer {
-            text-align: center;
-            background: #007bff;
-            color: white;
+            background-color: #007bff;
             padding: 10px;
-            font-size: 14px;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
 
-        /* Desktop Fix */
-        @media (min-width: 1024px) {
-            .container {
-                min-height: 75vh; /* Centering fix for desktop */
+        /* Only Show Beta Message on Desktop */
+        @media (min-width: 768px) {
+            .beta-message {
+                display: block;
             }
         }
     </style>
@@ -115,37 +90,33 @@
 
     <!-- Navbar -->
     <div class="navbar">HealthX</div>
-
-    <!-- Navigation -->
     <div class="nav-links">
         <a href="#">Home</a>
         <a href="#">Sign Up</a>
         <a href="#">Login</a>
     </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <h1>Welcome to <span style="color:#007bff;">HealthX</span></h1>
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+        <h2>Welcome to <span class="highlight">HealthX</span></h2>
         <p>Your AI-Powered Health Assistant</p>
+        
+        <!-- Beta Message (Visible Only on Desktop) -->
+        <p class="beta-message">
+            Welcome to HealthX (Beta)! 🚀 <br>
+            This is our early version, and we’re continuously improving. <br>
+            Some features may not work perfectly on desktop, but we’re working on it. <br>
+            Thank you for your patience and support!
+        </p>
 
         <div class="buttons">
-            <button class="btn" onclick="chatWithAI()">Chat with AI</button>
-            <button class="btn" onclick="medicalReport()">Medical Report</button>
+            <button class="btn">Chat with AI</button>
+            <button class="btn">Medical Report</button>
         </div>
     </div>
 
     <!-- Footer -->
     <div class="footer">© 2024 HealthX. All Rights Reserved.</div>
-
-    <script>
-        function chatWithAI() {
-            alert("Chat with AI feature coming soon!");
-        }
-
-        function medicalReport() {
-            alert("Medical Report feature coming soon!");
-        }
-    </script>
 
 </body>
 </html>
