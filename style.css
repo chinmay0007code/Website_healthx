@@ -11,25 +11,23 @@ body {
 /* Navbar */
 .navbar {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center content */
+    flex-direction: column;  
+    align-items: center;
     background-color: #007bff;
     padding: 15px 20px;
-    position: relative;
+    position: relative; /* So we can position elements inside it */
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
     color: white;
-    margin-bottom: 10px; /* Space between logo and nav links */
+    margin-bottom: 5px;
 }
 
 .nav-links {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
+    gap: 15px;
 }
 
 .nav-links a {
@@ -38,11 +36,12 @@ body {
     font-size: 18px;
 }
 
-/* Theme Toggle */
+/* Theme Toggle - Adjusted */
 #theme-toggle {
     position: absolute;
-    right: 20px;
-    top: 15px;
+    right: 10px;  /* Moved more to the right */
+    top: 50%;  
+    transform: translateY(-50%); /* Center vertically */
     background: none;
     border: none;
     font-size: 24px;
@@ -60,7 +59,7 @@ h1 {
 }
 
 .highlight {
-    color: #ffd700; /* Changed to gold for better visibility */
+    color: #007bff;
 }
 
 .buttons {
