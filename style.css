@@ -1,17 +1,51 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #007bff;
+    padding: 15px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    background-color: #0056b3;
+    border-radius: 5px;
+}
+
+/* Center Content */
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Button Styling */
 button {
-  background-color: #007bff; /* Blue color */
-  color: white; /* White text */
-  padding: 12px 20px;
-  font-size: 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 80%; /* Adjust width */
-  margin: 10px auto;
-  display: block;
-  transition: 0.3s;
+    display: block;
+    width: 250px;
+    margin: 10px auto;
+    padding: 15px;
+    font-size: 18px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker blue */
+    background-color: #0056b3;
 }
