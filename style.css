@@ -1,10 +1,14 @@
 /* General Styles */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: white; /* Changed from black to white */
-    color: black;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white !important; /* Ensures background is white */
+    color: black !important; /* Ensures text remains readable */
 }
 
 /* Navbar */
