@@ -15,7 +15,6 @@ body {
     align-items: center;
     background-color: #007bff;
     padding: 15px 20px;
-    position: relative; /* So we can position elements inside it */
 }
 
 .logo {
