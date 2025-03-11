@@ -45,15 +45,7 @@
             font-weight: bold;
         }
 
-        .beta-message {
-            font-size: 14px;
-            color: #555;
-            text-align: center;
-            margin-top: 10px;
-            display: none; /* Hidden by default */
-        }
-
-        /* Buttons - Stack on Mobile */
+        /* Buttons */
         .buttons {
             margin-top: 20px;
             display: flex;
@@ -73,11 +65,25 @@
             max-width: 300px;
         }
 
-        /* Small Contact Us Section */
+        /* Contact Us Section (Now at the Bottom) */
         .contact {
-            margin-top: 20px;
+            margin-top: 30px;
+            padding: 15px;
+            background: white;
+            color: #555;
             font-size: 14px;
-            color: #333;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         /* Footer */
@@ -90,22 +96,6 @@
             width: 100%;
         }
 
-        /* Only Show Beta Message on Desktop */
-        @media (min-width: 768px) {
-            .beta-message {
-                display: block;
-            }
-
-            /* Keep buttons side-by-side on Desktop */
-            .buttons {
-                flex-direction: row;
-                justify-content: center;
-            }
-
-            .btn {
-                width: auto;
-            }
-        }
     </style>
 </head>
 <body>
@@ -122,14 +112,6 @@
     <div class="welcome-section">
         <h2>Welcome to <span class="highlight">HealthX</span></h2>
         <p>Your AI-Powered Health Assistant</p>
-        
-        <!-- Beta Message (Visible Only on Desktop) -->
-        <p class="beta-message">
-            Welcome to HealthX (Beta)! 🚀 <br>
-            This is our early version, and we’re continuously improving. <br>
-            Some features may not work perfectly on desktop, but we’re working on it. <br>
-            Thank you for your patience and support!
-        </p>
 
         <div class="buttons">
             <button class="btn">Chat with AI</button>
@@ -137,7 +119,7 @@
         </div>
     </div>
 
-    <!-- Small Contact Us Section -->
+    <!-- Styled Contact Us Section -->
     <div class="contact">
         Contact us: <a href="mailto:healthX028@gmail.com">healthX028@gmail.com</a>
     </div>
