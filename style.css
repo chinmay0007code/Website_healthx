@@ -7,8 +7,16 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: white !important; /* Ensures background is white */
-    color: black !important; /* Ensures text remains readable */
+    background-color: white !important; /* Forces white background */
+    color: black !important; /* Ensures text is readable */
+}
+
+/* Fix for Dark Mode Users */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: white !important; /* Forces white background even in dark mode */
+        color: black !important;
+    }
 }
 
 /* Navbar */
@@ -26,34 +34,12 @@ body {
     font-weight: bold;
 }
 
-/* Header */
-.header {
+/* Main Section */
+.main-section {
+    background-color: white !important; /* Ensure the section is white */
+    color: black !important;
     text-align: center;
     padding: 50px 20px;
-}
-
-.header h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: #007bff;
-}
-
-/* Buttons */
-.button {
-    display: block;
-    width: 200px;
-    margin: 10px auto;
-    padding: 10px;
-    text-align: center;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.button:hover {
-    background-color: #0056b3;
 }
 
 /* Footer */
@@ -62,7 +48,5 @@ body {
     color: white;
     text-align: center;
     padding: 15px;
-    position: relative;
-    bottom: 0;
     width: 100%;
 }
