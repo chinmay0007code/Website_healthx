@@ -44,93 +44,107 @@
         }
 
         .welcome-section {
-            margin-top: 50px;
-        }
-
-        .highlight {
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        /* Buttons */
-        .buttons {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 80%;
-            max-width: 300px;
-        }
-
-        /* Contact Us Section (Placed Above Footer with 1 Inch Gap) */
-        .contact {
-            padding: 15px;
             background: white;
-            color: #555;
-            font-size: 14px;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        /* How to Use Section */
+        .how-to-use {
+            background: #ffffff;
+            padding: 15px;
+            margin: 20px auto;
             border-radius: 8px;
             width: 90%;
-            max-width: 400px;
-            margin: 40px auto 20px auto; /* Increased top margin for a lower position */
+            max-width: 600px;
+            text-align: left;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .contact a {
-            color: #007bff;
+        .how-to-use h2 {
+            text-align: center;
+        }
+
+        /* Buttons */
+        .button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
             text-decoration: none;
-            font-weight: bold;
+            border-radius: 5px;
         }
 
         /* Footer */
         .footer {
             background-color: #007bff;
-            padding: 10px;
             color: white;
-            text-align: center;
+            padding: 10px;
+            margin-top: auto;
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
     <div class="navbar">HealthX</div>
+    
     <div class="nav-links">
         <a href="#">Home</a>
         <a href="#">Sign Up</a>
         <a href="#">Login</a>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
         <div class="welcome-section">
-            <h2>Welcome to <span class="highlight">HealthX</span></h2>
+            <h1>Welcome to <span style="color:#007bff;">HealthX</span></h1>
             <p>Your AI-Powered Health Assistant</p>
-
-            <div class="buttons">
-                <button class="btn">Chat with AI</button>
-                <button class="btn">Medical Report</button>
-            </div>
+            <a href="#" class="button">Chat with AI</a>
         </div>
+
+        <!-- How to Use HealthX Section -->
+        <div class="how-to-use">
+            <h2>How to Use HealthX</h2>
+            <p>Welcome to HealthX, your AI-powered health assistant. Follow these steps to get the most out of our platform:</p>
+
+            <h3>1. Chat with AI</h3>
+            <ul>
+                <li>Click on the "Chat with AI" button.</li>
+                <li>Enter your symptoms in the chat.</li>
+                <li>The AI will analyze your input and predict the top 3 possible diseases with a probability score.</li>
+                <li>Always consult a medical professional for confirmation.</li>
+            </ul>
+
+            <h3>2. Generate a Medical Report</h3>
+            <ul>
+                <li>Click on the "Medical Report" button.</li>
+                <li>Provide details about your symptoms and health history.</li>
+                <li>The AI will generate a report including:</li>
+                <ul>
+                    <li>Potential disease explanations</li>
+                    <li>Recommended workouts & exercises</li>
+                    <li>Dietary suggestions</li>
+                    <li>Lifestyle changes</li>
+                    <li>Preventive measures</li>
+                </ul>
+                <li>Use this as a guide but always seek professional medical advice.</li>
+            </ul>
+
+            <h3>3. Stay Updated</h3>
+            <p>HealthX is in beta, and we are continuously improving. Keep checking for updates!</p>
+
+            <h3>Disclaimer:</h3>
+            <p>HealthX provides AI-based insights but does not replace professional medical advice. Always consult a doctor for an accurate diagnosis and treatment.</p>
+        </div>
+
+        <a href="#" class="button">Medical Report</a>
     </div>
 
-    <!-- Styled Contact Us Section (Now 1 Inch Above Footer) -->
-    <div class="contact">
-        Contact us: <a href="mailto:healthX028@gmail.com">healthX028@gmail.com</a>
+    <div class="footer">
+        © 2024 HealthX. All Rights Reserved.
     </div>
-
-    <!-- Footer -->
-    <div class="footer">© 2024 HealthX. All Rights Reserved.</div>
 
 </body>
 </html>
