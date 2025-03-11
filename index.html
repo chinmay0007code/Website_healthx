@@ -5,118 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthX - AI Health Assistant</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
+        /* Global Styles */
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
-            background-color: #f8f9fa;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        /* Header */
-        .header {
+        /* Body and Layout */
+        html, body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar */
+        .navbar {
             background-color: #007bff;
-            color: white;
             padding: 15px;
-            font-size: 24px;
+            text-align: center;
+            color: white;
+            font-size: 22px;
             font-weight: bold;
         }
 
-        /* Navigation */
-        .nav {
+        .nav-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            background-color: #007bff;
-            padding: 10px 0;
+            padding: 10px;
+            background: white;
         }
 
-        .nav a {
+        .nav-links a {
             text-decoration: none;
-            color: white;
+            color: black;
+            margin: 0 15px;
             font-size: 18px;
-            font-weight: bold;
-            padding: 8px 15px;
         }
 
-        .nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
+        .nav-links a:hover {
+            color: #007bff;
         }
 
         /* Main Content */
         .container {
-            padding: 50px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
         }
 
-        .title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
+        h1 {
+            color: black;
+            font-size: 30px;
         }
 
-        .highlight {
+        h1 span {
             color: #007bff;
         }
 
-        .description {
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: #333;
-        }
-
-        /* Button Container */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            padding: 15px 25px;
+        p {
             font-size: 18px;
-            font-weight: bold;
-            border: none;
+            color: #333;
+            margin: 10px 0 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 20px;
+            margin: 10px;
+            font-size: 18px;
             background-color: #007bff;
             color: white;
-            border-radius: 8px;
+            border: none;
             cursor: pointer;
-            min-width: 180px;
-            transition: 0.3s;
+            border-radius: 5px;
         }
 
-        .button:hover {
+        .btn:hover {
             background-color: #0056b3;
         }
 
         /* Footer */
         .footer {
+            text-align: center;
             background-color: #007bff;
             color: white;
             padding: 15px;
             font-size: 16px;
-            margin-top: 50px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            .button {
-                width: 100%;
-                max-width: 300px;
-            }
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <div class="header">HealthX</div>
-
-    <!-- Navigation -->
-    <div class="nav">
+    <!-- Navbar -->
+    <div class="navbar">HealthX</div>
+    <div class="nav-links">
         <a href="#">Home</a>
         <a href="#">Sign Up</a>
         <a href="#">Login</a>
@@ -124,14 +115,10 @@
 
     <!-- Main Content -->
     <div class="container">
-        <div class="title">Welcome to <span class="highlight">HealthX</span></div>
-        <div class="description">Your AI-Powered Health Assistant</div>
-
-        <!-- Buttons -->
-        <div class="button-container">
-            <button class="button" onclick="chatWithAI()">Chat with AI</button>
-            <button class="button" onclick="medicalReport()">Medical Report</button>
-        </div>
+        <h1>Welcome to <span>HealthX</span></h1>
+        <p>Your AI-Powered Health Assistant</p>
+        <button class="btn" onclick="chatWithAI()">Chat with AI</button>
+        <button class="btn" onclick="viewMedicalReport()">Medical Report</button>
     </div>
 
     <!-- Footer -->
@@ -139,13 +126,14 @@
         © 2024 HealthX. All Rights Reserved.
     </div>
 
+    <!-- JavaScript -->
     <script>
         function chatWithAI() {
-            alert("Chat with AI is under development.");
+            alert("Chat with AI feature coming soon!");
         }
 
-        function medicalReport() {
-            alert("Medical Report feature coming soon.");
+        function viewMedicalReport() {
+            alert("Medical report feature coming soon!");
         }
     </script>
 
