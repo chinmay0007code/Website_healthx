@@ -39,14 +39,14 @@ body {
 /* Theme Toggle - Adjusted */
 #theme-toggle {
     position: absolute;
-    right: 10px;  /* Moved more to the right */
-    top: 50%;  
-    transform: translateY(-50%); /* Center vertically */
+    right: 20px;  /* Increased spacing from the right */
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: white;
+    color: white; /* Default color for dark mode */
 }
 
 /* Hero Section */
@@ -87,4 +87,32 @@ footer {
     padding: 10px;
     background-color: #007bff;
     color: white;
+}
+
+/* Light Mode Adjustments */
+.light-mode {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.light-mode .navbar {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+.light-mode .nav-links a {
+    color: black;
+}
+
+.light-mode button {
+    background-color: #0056b3;
+    color: white;
+}
+
+.light-mode button:hover {
+    background-color: #003b80;
+}
+
+.light-mode #theme-toggle {
+    color: black; /* Ensures toggle button is visible in light mode */
 }
