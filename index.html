@@ -3,114 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthX - AI-Powered Health Assistant</title>
-
-    <!-- CSS Code Inside <style> -->
+    <title>HealthX - AI Health Assistant</title>
     <style>
         /* General Styles */
         body {
-            background-color: white; /* Set background to white */
-            color: black;
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
 
-        /* Header Section */
-        header {
+        /* Header */
+        .header {
             background-color: #007bff;
             color: white;
-            padding: 15px;
+            padding: 15px 0;
+            font-size: 24px;
+            font-weight: bold;
         }
 
-        header h1 {
-            margin: 0;
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: #007bff;
+            padding: 10px 0;
         }
 
-        nav {
-            margin-top: 10px;
-        }
-
-        nav a {
-            color: white;
+        .nav a {
             text-decoration: none;
-            margin: 0 15px;
+            color: white;
             font-size: 18px;
         }
 
-        /* Welcome Section */
-        .welcome {
-            margin: 40px 0;
+        /* Main Content */
+        .container {
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 20px;
         }
 
         .highlight {
             color: #007bff;
-            font-weight: bold;
         }
 
-        /* Buttons */
-        button {
+        .description {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Button Container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
             background-color: #007bff;
             color: white;
-            padding: 10px 20px;
-            border: none;
-            margin: 10px;
-            cursor: pointer;
-            font-size: 16px;
             border-radius: 5px;
+            cursor: pointer;
         }
 
-        button:hover {
+        .button:hover {
             background-color: #0056b3;
         }
 
         /* Footer */
-        footer {
+        .footer {
             background-color: #007bff;
             color: white;
             padding: 10px;
-            position: absolute;
-            width: 100%;
-            bottom: 0;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <h1>HealthX</h1>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Sign Up</a>
-            <a href="#">Login</a>
-        </nav>
-    </header>
+    <!-- Header -->
+    <div class="header">HealthX</div>
 
-    <!-- Welcome Section -->
-    <section class="welcome">
-        <h1>Welcome to <span class="highlight">HealthX</span></h1>
-        <p>Your AI-Powered Health Assistant</p>
+    <!-- Navigation -->
+    <div class="nav">
+        <a href="#">Home</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Login</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="title">Welcome to <span class="highlight">HealthX</span></div>
+        <div class="description">Your AI-Powered Health Assistant</div>
 
         <!-- Buttons -->
-        <button onclick="chatWithAI()">Chat with AI</button>
-        <button onclick="viewMedicalReport()">Medical Report</button>
-    </section>
+        <div class="button-container">
+            <button class="button" onclick="chatWithAI()">Chat with AI</button>
+            <button class="button" onclick="medicalReport()">Medical Report</button>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer>
-        <p>© 2024 HealthX. All Rights Reserved.</p>
-    </footer>
+    <div class="footer">
+        © 2024 HealthX. All Rights Reserved.
+    </div>
 
-    <!-- JavaScript Code Inside <script> -->
     <script>
         function chatWithAI() {
-            alert("Chat feature coming soon! Stay tuned.");
+            alert("Chat with AI is under development.");
+            // You can redirect to chat page: window.location.href = "chat.html";
         }
 
-        function viewMedicalReport() {
-            alert("Medical Report feature coming soon!");
+        function medicalReport() {
+            alert("Medical Report feature coming soon.");
+            // You can redirect to report page: window.location.href = "medical-report.html";
         }
     </script>
 
