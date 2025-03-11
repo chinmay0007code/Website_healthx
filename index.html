@@ -61,8 +61,9 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px; /* Added spacing for desktop */
             margin-top: 20px;
+            flex-wrap: wrap; /* Makes it responsive */
         }
 
         .button {
@@ -73,6 +74,7 @@
             color: white;
             border-radius: 5px;
             cursor: pointer;
+            min-width: 150px; /* Ensures consistent button width */
         }
 
         .button:hover {
@@ -85,6 +87,13 @@
             color: white;
             padding: 10px;
             margin-top: 30px;
+        }
+
+        /* Responsive Fix for Desktop */
+        @media (min-width: 768px) {
+            .button-container {
+                flex-direction: row;
+            }
         }
     </style>
 </head>
@@ -120,12 +129,10 @@
     <script>
         function chatWithAI() {
             alert("Chat with AI is under development.");
-            // You can redirect to chat page: window.location.href = "chat.html";
         }
 
         function medicalReport() {
             alert("Medical Report feature coming soon.");
-            // You can redirect to report page: window.location.href = "medical-report.html";
         }
     </script>
 
