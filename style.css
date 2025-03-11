@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white; /* Fixed light mode */
+    background-color: white; /* Changed from black to white */
     color: black;
 }
 
