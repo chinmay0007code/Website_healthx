@@ -3,119 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthX - Complete Profile</title>
+    <title>HealthX Profile</title>
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
-            margin: 0;
+            background-color: #f4f4f4;
         }
-
-        /* Container Styling */
+        .main-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
         .container {
-            background-color: white;
+            background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             width: 90%;
-            max-width: 350px;
+            max-width: 300px;
             text-align: center;
         }
-
-        /* Title Styling */
         .title {
-            color: #007bff;
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 20px;
             margin-bottom: 15px;
         }
-
-        /* Form Styling */
-        .profile-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* Input Fields */
         input, select {
             width: 100%;
-            height: 40px; /* Smaller boxes */
-            font-size: 14px;
-            padding: 8px;
+            padding: 10px;
+            margin: 8px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: white;
         }
-
-        /* Button Styling */
         button {
             width: 100%;
-            height: 40px;
-            background-color: #007bff;
+            padding: 10px;
+            background: #007bff;
             color: white;
-            font-size: 14px;
-            font-weight: bold;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
+            font-size: 16px;
         }
-
-        /* Button Hover Effect */
         button:hover {
-            background-color: #0056b3;
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1 class="title">HealthX</h1>
+    <h1 class="main-title">HealthX</h1> <!-- "HealthX" outside the box -->
 
-        <div class="profile-form">
-            <input type="text" id="fullName" placeholder="Full Name">
-            <input type="date" id="dob" placeholder="Date of Birth">
-            <select id="gender">
-                <option value="" disabled selected>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+    <div class="container">
+        <h2 class="title">Complete Your Profile</h2> <!-- Form title -->
+        
+        <form id="profile-form">
+            <input type="text" id="full-name" placeholder="Full Name" required>
+            <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
             </select>
-            <input type="tel" id="phone" placeholder="Phone Number">
-            <button id="saveProfile">Save Profile</button>
-        </div>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <button type="submit">Save Profile</button>
+        </form>
     </div>
 
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+
     <script>
-        // Save Profile Button Functionality
-        document.getElementById("saveProfile").addEventListener("click", function() {
-            let fullName = document.getElementById("fullName").value;
-            let dob = document.getElementById("dob").value;
-            let gender = document.getElementById("gender").value;
-            let phone = document.getElementById("phone").value;
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
+            authDomain: "health-x-signup.firebaseapp.com",
+            projectId: "health-x-signup",
+            storageBucket: "health-x-signup.appspot.com",
+            messagingSenderId: "901183087088",
+            appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
+            measurementId: "G-LZKBPJZVXD"
+        };
 
-            if (fullName === "" || dob === "" || gender === "" || phone === "") {
-                alert("Please fill in all fields before saving.");
-                return;
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+
+        // Check if user is logged in
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                loadProfile(user.uid);
+            } else {
+                signInAnonymously();
             }
+        });
 
-            let userData = {
+        function signInAnonymously() {
+            auth.signInAnonymously()
+                .then(userCredential => {
+                    console.log("User signed in anonymously");
+                })
+                .catch(error => {
+                    console.error("Error signing in:", error);
+                });
+        }
+
+        function loadProfile(uid) {
+            db.collection("users").doc(uid).get().then(doc => {
+                if (doc.exists) {
+                    document.getElementById("full-name").value = doc.data().fullName || "";
+                    document.getElementById("gender").value = doc.data().gender || "";
+                    document.getElementById("phone").value = doc.data().phone || "";
+                }
+            });
+        }
+
+        document.getElementById("profile-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const user = auth.currentUser;
+            if (!user) return;
+
+            const fullName = document.getElementById("full-name").value;
+            const gender = document.getElementById("gender").value;
+            const phone = document.getElementById("phone").value;
+
+            db.collection("users").doc(user.uid).set({
                 fullName: fullName,
-                dob: dob,
                 gender: gender,
                 phone: phone
-            };
-
-            localStorage.setItem("healthXProfile", JSON.stringify(userData));
-
-            alert("Profile saved successfully!");
+            }).then(() => {
+                alert("Profile saved successfully!");
+            }).catch(error => {
+                console.error("Error saving profile:", error);
+            });
         });
+
     </script>
 
 </body>
