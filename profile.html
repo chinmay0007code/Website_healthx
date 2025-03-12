@@ -3,66 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health X - Profile</title>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            font-size: 28px;
-            font-weight: bold;
-            color: #007bff;
-            margin-top: 20px;
-        }
-        .container {
-            background: white;
-            width: 90%;
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            margin-bottom: 20px;
-        }
-        input, select {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            background: white;
-        }
-        button {
-            width: 92%;
-            padding: 12px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-    </style>
+    <title>Health X - Complete Profile</title>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">Health X</div>
+    <h2>Health X</h2>
     <div class="container">
-        <h2>Complete Your Profile</h2>
+        <h3>Complete Your Profile</h3>
         <input type="text" id="fullName" placeholder="Full Name">
-        <input type="text" id="dob" placeholder="Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')">
+        <input type="date" id="dob" placeholder="Date of Birth">
         <select id="gender">
             <option value="" disabled selected>Select Gender</option>
             <option value="Male">Male</option>
@@ -76,21 +28,19 @@
     <script>
         // Firebase Configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
-            authDomain: "health-x-signup.firebaseapp.com",
-            projectId: "health-x-signup",
-            storageBucket: "health-x-signup.appspot.com",
-            messagingSenderId: "901183087088",
-            appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
-            measurementId: "G-LZKBPJZVXD"
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
         };
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
         const auth = firebase.auth();
+        const db = firebase.firestore();
 
-        // Function to save profile
         function saveProfile() {
             const user = auth.currentUser;
             if (!user) {
@@ -98,10 +48,10 @@
                 return;
             }
 
-            const fullName = document.getElementById("fullName").value;
+            const fullName = document.getElementById("fullName").value.trim();
             const dob = document.getElementById("dob").value;
             const gender = document.getElementById("gender").value;
-            const phone = document.getElementById("phone").value;
+            const phone = document.getElementById("phone").value.trim();
 
             if (!fullName || !dob || !gender || !phone) {
                 alert("Please fill all fields!");
@@ -113,27 +63,15 @@
                 dob: dob,
                 gender: gender,
                 phone: phone
-            }).then(() => {
-                alert("Profile Saved!");
-            }).catch(error => {
+            })
+            .then(() => {
+                alert("Profile Saved Successfully!");
+            })
+            .catch(error => {
                 console.error("Error saving profile: ", error);
+                alert("Error: " + error.message);
             });
         }
-
-        // Function to fetch saved data
-        auth.onAuthStateChanged(user => {
-            if (user) {
-                db.collection("users").doc(user.uid).get().then(doc => {
-                    if (doc.exists) {
-                        const data = doc.data();
-                        document.getElementById("fullName").value = data.fullName || "";
-                        document.getElementById("dob").value = data.dob || "";
-                        document.getElementById("gender").value = data.gender || "";
-                        document.getElementById("phone").value = data.phone || "";
-                    }
-                });
-            }
-        });
     </script>
 </body>
 </html>
