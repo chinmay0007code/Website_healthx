@@ -4,7 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthX Chatbot</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            width: 60%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <h1>HealthX Chatbot</h1>
@@ -12,6 +44,42 @@
     <button onclick="sendMessage()">Send</button>
     <p id="response"></p>
 
-    <script src="script.js"></script>
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById("userInput").value;
+            const responseElement = document.getElementById("response");
+
+            if (!userInput.trim()) {
+                responseElement.innerText = "Please enter a message.";
+                return;
+            }
+
+            try {
+                const res = await fetch("https://api.langflow.astra.datastax.com/lf/3dcb6c45-02cc-4957-861a-cf104bb6603c/api/v1/run/2ae91fdd-cf40-4dd0-a82b-ad1e5222da56?stream=false", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer YOUR_APPLICATION_TOKEN" 
+                    },
+                    body: JSON.stringify({
+                        input_value: userInput,
+                        output_type: "chat",
+                        input_type: "chat",
+                        tweaks: {
+                            "ChatInput-jd56w": {},
+                            "GoogleGenerativeAIModel-DbCV3": {},
+                            "ChatOutput-YtLZ2": {}
+                        }
+                    })
+                });
+
+                const data = await res.json();
+                responseElement.innerText = data.response || "No response received.";
+            } catch (error) {
+                responseElement.innerText = "Error connecting to chatbot.";
+                console.error(error);
+            }
+        }
+    </script>
 </body>
 </html>
