@@ -3,13 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Login - HealthX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .home-button {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        .input-box {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+        }
+        .signup-link {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Login</h1>
-    <input type="text" placeholder="Enter Username">
-    <input type="password" placeholder="Enter Password">
-    <button>Login</button>
+
+    <a href="home.html" class="home-button">Home</a>
+
+    <div class="container">
+        <h2>Welcome Back to <span style="color: #007bff;">HealthX</span></h2>
+        <p>Your AI-Powered Health Assistant</p>
+
+        <input type="email" id="email" class="input-box" placeholder="Enter Email">
+        <input type="password" id="password" class="input-box" placeholder="Enter Password">
+        
+        <button class="login-btn" onclick="login()">Login</button>
+
+        <p class="signup-link">Don't have an account? <a href="signup.html" style="color: #007bff;">Sign Up</a></p>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
+            authDomain: "health-x-signup.firebaseapp.com",
+            projectId: "health-x-signup",
+            storageBucket: "health-x-signup.appspot.com",
+            messagingSenderId: "901183087088",
+            appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
+            measurementId: "G-LZKBPJZVXD"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        // Login Function
+        window.login = function () {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Login Successful! ✅");
+                    console.log("User:", userCredential.user);
+                    window.location.href = "index.html"; // Redirect to index.html
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                    console.error("Login Error:", error);
+                });
+        };
+    </script>
 </body>
 </html>
