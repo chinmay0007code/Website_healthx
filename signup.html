@@ -36,8 +36,8 @@
             color: #333;
         }
         .input-box {
-            width: 100%;
-            padding: 10px;
+            width: 80%;  /* Reduced input size */
+            padding: 8px; /* Reduced padding */
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -52,26 +52,8 @@
             border-radius: 5px;
             cursor: pointer;
             display: block;
-            width: 80%;
+            width: 85%; /* Kept slightly bigger */
             margin: 10px auto;
-        }
-        .google-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            color: #555;
-            padding: 8px 16px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 80%;
-            margin: 10px auto;
-        }
-        .google-btn img {
-            width: 20px;
-            margin-right: 10px;
         }
         .login-link {
             margin-top: 10px;
@@ -86,59 +68,53 @@
         <h2>Welcome to <span style="color: #007bff;">HealthX</span></h2>
         <p>Your AI-Powered Health Assistant</p>
 
-        <input type="email" class="input-box" placeholder="Enter Email">
-        <input type="password" class="input-box" placeholder="Enter Password">
+        <input type="email" id="email" class="input-box" placeholder="Enter Email">
+        <input type="password" id="password" class="input-box" placeholder="Enter Password">
         
-        <button class="signup-btn">Sign Up</button>
-
-        <button class="google-btn">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google Logo">
-            Sign up with Google
-        </button>
+        <button class="signup-btn" onclick="signup()">Sign Up</button>
 
         <p class="login-link">Already have an account? <a href="login.html" style="color: #007bff;">Login</a></p>
     </div>
 
-    <!-- Firebase SDK -->
-    <script type="module">
-        // Import Firebase SDKs
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
-            authDomain: "health-x-signup.firebaseapp.com",
-            projectId: "health-x-signup",
-            storageBucket: "health-x-signup.appspot.com",
-            messagingSenderId: "901183087088",
-    appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
-            measurementId: "G-LZKBPJZVXD"
-        };
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
+            authDomain: "health-x-signup.firebaseapp.com",
+            projectId: "health-x-signup",
+            storageBucket: "health-x-signup.appspot.com",
+            messagingSenderId: "901183087088",
+            appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
+            measurementId: "G-LZKBPJZVXD"
+        };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth();
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
 
-        // Signup Function
-        window.signup = function () {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+        // Signup Function
+        window.signup = function () {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
 
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    alert("Signup Successful! ✅");
-                    console.log("User:", userCredential.user);
-                })
-                .catch((error) => {
-                    alert("Error: " + error.message);
-                    console.error("Signup Error:", error);
-                });
-        }
-    </script>
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Signup Successful! ✅");
+                    console.log("User:", userCredential.user);
+                    window.location.href = "index.html"; // Redirect to index.html
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                    console.error("Signup Error:", error);
+                });
+        }
+    </script>
 </body>
 </html>
-
-
