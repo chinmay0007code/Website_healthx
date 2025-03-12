@@ -40,6 +40,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
+            background: white;
         }
         button {
             width: 92%;
@@ -61,7 +62,7 @@
     <div class="container">
         <h2>Complete Your Profile</h2>
         <input type="text" id="fullName" placeholder="Full Name">
-        <input type="date" id="dob" placeholder="Date of Birth">
+        <input type="text" id="dob" placeholder="Date of Birth" onfocus="(this.type='date')" onblur="(this.type='text')">
         <select id="gender">
             <option value="" disabled selected>Select Gender</option>
             <option value="Male">Male</option>
