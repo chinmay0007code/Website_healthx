@@ -1,1 +1,131 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+        input, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Complete Your Profile</h2>
+        <form id="profileForm">
+            <input type="text" id="fullname" placeholder="Full Name" required>
+            <input type="date" id="dob" required>
+            <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <button type="submit">Save Profile</button>
+        </form>
+    </div>
+
+    <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
+            authDomain: "health-x-signup.firebaseapp.com",
+            projectId: "health-x-signup",
+            storageBucket: "health-x-signup.appspot.com",
+            messagingSenderId: "901183087088",
+            appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
+            measurementId: "G-LZKBPJZVXD"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore(app);
+
+        // Check if user is logged in
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                window.location.href = "login.html"; // Redirect to login if not authenticated
+            } else {
+                const userRef = doc(db, "Users (profile)", user.uid);
+                const userSnap = await getDoc(userRef);
+
+                if (userSnap.exists()) {
+                    window.location.href = "dashboard.html"; // Redirect if profile already exists
+                }
+            }
+        });
+
+        // Handle Profile Submission
+        document.getElementById("profileForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const user = auth.currentUser;
+            if (!user) {
+                alert("User not authenticated!");
+                return;
+            }
+
+            const fullname = document.getElementById("fullname").value;
+            const dob = document.getElementById("dob").value;
+            const gender = document.getElementById("gender").value;
+            const phone = document.getElementById("phone").value;
+
+            if (!fullname || !dob || !gender || !phone) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const userRef = doc(db, "Users (profile)", user.uid);
+            await setDoc(userRef, {
+                fullname: fullname,
+                email: user.email,
+                dob: dob,
+                gender: gender,
+                phone: phone
+            });
+
+            alert("Profile saved successfully!");
+            window.location.href = "dashboard.html"; // Redirect after saving
+        });
+    </script>
+
+</body>
+</html>
