@@ -3,17 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Sign Up - HealthX</title>
     <style>
         /* Full Page Styling */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            text-align: center;
+        }
+
+        /* Welcome Text */
+        .welcome-text {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .sub-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
         }
 
         /* Signup Container */
@@ -22,15 +38,14 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
             width: 350px;
         }
 
         /* Signup Title */
         .signup-container h1 {
-            margin-bottom: 20px;
             font-size: 24px;
             color: #333;
+            margin-bottom: 20px;
         }
 
         /* Input Fields */
@@ -41,6 +56,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
+            text-align: center;
         }
 
         /* Signup Button */
@@ -62,6 +78,12 @@
     </style>
 </head>
 <body>
+
+    <!-- Welcome Message -->
+    <div class="welcome-text">Welcome to HealthX</div>
+    <div class="sub-text">Your AI-powered healthcare assistant. Thanks for joining us!</div>
+
+    <!-- Signup Container -->
     <div class="signup-container">
         <h1>Sign Up</h1>
         <input type="email" id="email" placeholder="Enter Email">
