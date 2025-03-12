@@ -3,14 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health X - Complete Profile</title>
+    <title>HealthX - Complete Profile</title>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
-    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: blue;
+        }
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
 </head>
 <body>
-    <h2>HealthX</h2>
+    <h2>Health X</h2>
     <div class="container">
         <h3>Complete Your Profile</h3>
         <input type="text" id="fullName" placeholder="Full Name">
