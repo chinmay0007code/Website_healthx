@@ -5,120 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - HealthX</title>
     <style>
-        /* Full Page Styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #f4f4f4;
+            text-align: center;
             margin: 0;
-            text-align: center;
+            padding: 0;
         }
-
-        /* Navbar */
-        .navbar {
-            width: 100%;
-            background-color: #007BFF;
-            padding: 15px 0;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-
-        .navbar a {
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        /* Signup Box */
-        .signup-container {
+        .container {
+            width: 90%;
+            max-width: 400px;
             background: white;
-            padding: 30px;
+            padding: 20px;
+            margin: 50px auto;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
-            margin-top: 80px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-
-        /* Title */
-        .signup-container h1 {
-            font-size: 24px;
+        .home-button {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        h2 {
             color: #333;
-            margin-bottom: 10px;
         }
-
-        /* Input Fields */
-        input {
+        .input-box {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
-            text-align: center;
         }
-
-        /* Buttons */
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #007BFF;
+        .signup-btn {
+            background-color: #007bff;
             color: white;
+            padding: 8px 16px;
+            font-size: 16px;
             border: none;
             border-radius: 5px;
-            font-size: 18px;
             cursor: pointer;
-            transition: 0.3s;
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+        }
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            color: #555;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%;
+            margin: 10px auto;
+        }
+        .google-btn img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .login-link {
             margin-top: 10px;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        /* Already Have Account */
-        .account-text {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .login-btn {
-            color: #007BFF;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <a href="home.html">Home</a>
-    </div>
+    <a href="home.html" class="home-button">Home</a>
 
-    <!-- Signup Box -->
-    <div class="signup-container">
-        <h1>Welcome to <span style="color:#007BFF;">HealthX</span></h1>
+    <div class="container">
+        <h2>Welcome to <span style="color: #007bff;">HealthX</span></h2>
         <p>Your AI-Powered Health Assistant</p>
 
-        <input type="email" id="email" placeholder="Enter Email">
-        <input type="password" id="password" placeholder="Enter Password">
-        <button class="btn" onclick="signup()">Sign Up</button>
+        <input type="email" class="input-box" placeholder="Enter Email">
+        <input type="password" class="input-box" placeholder="Enter Password">
+        
+        <button class="signup-btn">Sign Up</button>
 
-        <p class="account-text">
-            Already have an account? 
-            <a href="login.html" class="login-btn">Login</a>
-        </p>
+        <button class="google-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google Logo">
+            Sign up with Google
+        </button>
+
+        <p class="login-link">Already have an account? <a href="login.html" style="color: #007bff;">Login</a></p>
     </div>
+
     <!-- Firebase SDK -->
     <script type="module">
         // Import Firebase SDKs
