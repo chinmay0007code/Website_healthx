@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthX - Complete Profile</title>
+    
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
@@ -15,7 +17,9 @@
             background-color: #f4f4f4;
         }
         h2 {
-            color: blue;
+            color: #3399FF; /* Light Blue */
+            font-size: 28px;
+            font-weight: bold;
         }
         .container {
             background: white;
@@ -26,32 +30,38 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
-        input, select, button {
-            width: 100%;
-            padding: 10px;
+        h3 {
+            font-size: 20px;
+        }
+        input, select {
+            width: 95%; /* Same size for all */
+            padding: 12px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
         }
         button {
-            background-color: blue;
+            width: 90%;
+            padding: 12px;
+            background-color: #3399FF; /* Light Blue */
             color: white;
             font-size: 16px;
             cursor: pointer;
             border: none;
+            border-radius: 5px;
         }
         button:hover {
-            background-color: darkblue;
+            background-color: #007BFF;
         }
     </style>
 </head>
 <body>
-    <h2>Health X</h2>
+    <h2>HealthX</h2>
     <div class="container">
         <h3>Complete Your Profile</h3>
         <input type="text" id="fullName" placeholder="Full Name">
-        <input type="date" id="dob" placeholder="Date of Birth">
+        <input type="date" id="dob">
         <select id="gender">
             <option value="" disabled selected>Select Gender</option>
             <option value="Male">Male</option>
@@ -65,12 +75,13 @@
     <script>
         // Firebase Configuration
         const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
+            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
+            authDomain: "health-x-signup.firebaseapp.com",
+            projectId: "health-x-signup",
+            storageBucket: "health-x-signup.appspot.com",
+            messagingSenderId: "901183087088",
+            appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
+            measurementId: "G-LZKBPJZVXD"
         };
 
         // Initialize Firebase
