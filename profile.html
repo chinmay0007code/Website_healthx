@@ -3,75 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Profile</title>
+    <title>Health X - Profile</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #f2f2f2;
+            text-align: center;
             margin: 0;
+            padding: 0;
+        }
+        .header {
+            font-size: 28px;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 20px;
         }
         .container {
             background: white;
-            padding: 25px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
             border-radius: 10px;
-            text-align: center;
-            width: 320px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
         }
         input, select {
-            width: 110%;
-            margin: 8px 0;
-            padding: 12px;
-            border: 1px solid #ddd;
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
-        }
-        input::placeholder, select {
-            color: gray;
+            font-size: 16px;
         }
         button {
-            width: 100%;
+            width: 92%;
             padding: 12px;
-            background-color: #007bff;
+            background: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             font-size: 16px;
+            cursor: pointer;
         }
         button:hover {
-            background-color: #0056b3;
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
-
+    <div class="header">Health X</div>
     <div class="container">
         <h2>Complete Your Profile</h2>
-        <form id="profileForm">
-            <input type="text" id="fullname" placeholder="Full Name" required>
-            <input type="text" id="dob" onfocus="(this.type='date')" placeholder="Date of Birth" required>
-            <select id="gender" required>
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-            </select>
-            <input type="tel" id="phone" placeholder="Phone Number" required>
-            <button type="submit">Save Profile</button>
-        </form>
+        <input type="text" id="fullName" placeholder="Full Name">
+        <input type="date" id="dob" placeholder="Date of Birth">
+        <select id="gender">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="tel" id="phone" placeholder="Phone Number">
+        <button onclick="saveProfile()">Save Profile</button>
     </div>
 
-    <script type="module">
-        // Import Firebase SDKs
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
-
+    <script>
         // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
@@ -84,57 +85,54 @@
         };
 
         // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth();
-        const db = getFirestore(app);
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
 
-        // Check if user is logged in
-        onAuthStateChanged(auth, async (user) => {
-            if (!user) {
-                window.location.href = "login.html"; // Redirect to login if not authenticated
-            } else {
-                const userRef = doc(db, "Users (profile)", user.uid);
-                const userSnap = await getDoc(userRef);
-
-                if (userSnap.exists()) {
-                    window.location.href = "dashboard.html"; // Redirect if profile already exists
-                }
-            }
-        });
-
-        // Handle Profile Submission
-        document.getElementById("profileForm").addEventListener("submit", async (event) => {
-            event.preventDefault();
-
+        // Function to save profile
+        function saveProfile() {
             const user = auth.currentUser;
             if (!user) {
-                alert("User not authenticated!");
+                alert("You must be logged in!");
                 return;
             }
 
-            const fullname = document.getElementById("fullname").value;
+            const fullName = document.getElementById("fullName").value;
             const dob = document.getElementById("dob").value;
             const gender = document.getElementById("gender").value;
             const phone = document.getElementById("phone").value;
 
-            if (!fullname || !dob || !gender || !phone) {
-                alert("Please fill in all fields.");
+            if (!fullName || !dob || !gender || !phone) {
+                alert("Please fill all fields!");
                 return;
             }
 
-            const userRef = doc(db, "Users (profile)", user.uid);
-            await setDoc(userRef, {
-                fullname: fullname,
-                email: user.email,
+            db.collection("users").doc(user.uid).set({
+                fullName: fullName,
                 dob: dob,
                 gender: gender,
                 phone: phone
+            }).then(() => {
+                alert("Profile Saved!");
+            }).catch(error => {
+                console.error("Error saving profile: ", error);
             });
+        }
 
-            alert("Profile saved successfully!");
-            window.location.href = "dashboard.html"; // Redirect after saving
+        // Function to fetch saved data
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                db.collection("users").doc(user.uid).get().then(doc => {
+                    if (doc.exists) {
+                        const data = doc.data();
+                        document.getElementById("fullName").value = data.fullName || "";
+                        document.getElementById("dob").value = data.dob || "";
+                        document.getElementById("gender").value = data.gender || "";
+                        document.getElementById("phone").value = data.phone || "";
+                    }
+                });
+            }
         });
     </script>
-
 </body>
 </html>
