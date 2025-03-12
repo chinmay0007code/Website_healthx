@@ -1,15 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8fb;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Signup Container */
+        .signup-container {
+            width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 100px auto;
+        }
+
+        /* Input Fields */
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+        }
+
+        /* Signup Button */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Sign Up</h1>
-    <input type="text" placeholder="Enter Username">
-    <input type="password" placeholder="Enter Password">
-    <button>Sign Up</button>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <input type="email" id="email" placeholder="Enter Email">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="signup()">Sign Up</button>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
+            authDomain: "health-x-signup.firebaseapp.com",
+            projectId: "health-x-signup",
+            storageBucket: "health-x-signup.appspot.com",
+            messagingSenderId: "901183087088",
+    appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
+            measurementId: "G-LZKBPJZVXD"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+
+        // Signup Function
+        window.signup = function () {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("Signup Successful! ✅");
+                    console.log("User:", userCredential.user);
+                })
+                .catch((error) => {
+                    alert("Error: " + error.message);
+                    console.error("Signup Error:", error);
+                });
+        }
+    </script>
 </body>
 </html>
+
+
