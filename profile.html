@@ -4,122 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthX - Complete Profile</title>
-    
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
-
     <style>
+        /* General Page Styling */
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        h2 {
-            color: #3399FF; /* Light Blue */
+
+        /* Container Styling */
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Title Styling */
+        .title {
+            color: #007bff; /* Same blue color */
             font-size: 28px;
             font-weight: bold;
         }
-        .container {
-            background: white;
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+
+        /* Form Styling */
+        .profile-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
         }
-        h3 {
-            font-size: 20px;
-        }
+
+        /* Input Fields */
         input, select {
-            width: 95%; /* Same size for all */
-            padding: 12px;
-            margin: 10px 0;
+            width: 100%;
+            height: 45px;
+            font-size: 16px;
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 16px;
+            background-color: white; /* Making DOB and Gender white */
         }
+
+        /* Button Styling */
         button {
-            width: 90%;
-            padding: 12px;
-            background-color: #3399FF; /* Light Blue */
+            width: 100%;
+            height: 45px;
+            background-color: #007bff; /* Same blue color */
             color: white;
             font-size: 16px;
-            cursor: pointer;
+            font-weight: bold;
             border: none;
             border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
         }
+
+        /* Button Hover Effect */
         button:hover {
-            background-color: #007BFF;
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h2>HealthX</h2>
+
     <div class="container">
-        <h3>Complete Your Profile</h3>
-        <input type="text" id="fullName" placeholder="Full Name">
-        <input type="date" id="dob">
-        <select id="gender">
-            <option value="" disabled selected>Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select>
-        <input type="tel" id="phone" placeholder="Phone Number">
-        <button onclick="saveProfile()">Save Profile</button>
+        <h1 class="title">HealthX</h1> <!-- Title with the same blue color -->
+
+        <div class="profile-form">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" placeholder="Enter Full Name">
+
+            <label for="dob">Date of Birth (DOB)</label>
+            <input type="date" id="dob">
+
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter Phone Number">
+
+            <button id="saveProfile">Save Profile</button> <!-- Styled Button -->
+        </div>
     </div>
 
     <script>
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyDLMsOwZ0k01sjxi4oWPLoFdbrS8c2UIxg",
-            authDomain: "health-x-signup.firebaseapp.com",
-            projectId: "health-x-signup",
-            storageBucket: "health-x-signup.appspot.com",
-            messagingSenderId: "901183087088",
-            appId: "1:901183087088:web:3a5db402b7b50d94ddfd35",
-            measurementId: "G-LZKBPJZVXD"
-        };
+        // Adding functionality to the "Save Profile" button
+        document.getElementById("saveProfile").addEventListener("click", function() {
+            let fullName = document.getElementById("fullName").value;
+            let dob = document.getElementById("dob").value;
+            let gender = document.getElementById("gender").value;
+            let phone = document.getElementById("phone").value;
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-
-        function saveProfile() {
-            const user = auth.currentUser;
-            if (!user) {
-                alert("You must be logged in!");
+            // Validation checks
+            if (fullName === "" || dob === "" || gender === "" || phone === "") {
+                alert("Please fill in all fields before saving.");
                 return;
             }
 
-            const fullName = document.getElementById("fullName").value.trim();
-            const dob = document.getElementById("dob").value;
-            const gender = document.getElementById("gender").value;
-            const phone = document.getElementById("phone").value.trim();
-
-            if (!fullName || !dob || !gender || !phone) {
-                alert("Please fill all fields!");
-                return;
-            }
-
-            db.collection("users").doc(user.uid).set({
+            // Storing user data in Local Storage (or can be sent to Firebase)
+            let userData = {
                 fullName: fullName,
                 dob: dob,
                 gender: gender,
                 phone: phone
-            })
-            .then(() => {
-                alert("Profile Saved Successfully!");
-            })
-            .catch(error => {
-                console.error("Error saving profile: ", error);
-                alert("Error: " + error.message);
-            });
-        }
+            };
+
+            localStorage.setItem("healthXProfile", JSON.stringify(userData));
+
+            alert("Profile saved successfully!");
+        });
     </script>
+
 </body>
 </html>
