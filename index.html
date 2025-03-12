@@ -48,6 +48,25 @@
             width: 80%;
         }
 
+        /* Buttons */
+        .btn {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 10px auto;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
         /* Footer */
         .footer {
             background-color: #007bff;
@@ -73,8 +92,8 @@
         <div class="box">
             <h1>Welcome to <span style="color:#007bff;">HealthX</span></h1>
             <p>Your AI-Powered Health Assistant</p>
-            <button onclick="location.href='chat.html'">Chat with AI</button>
-            <button onclick="location.href='report.html'">Medical Report</button>
+            <a href="chat.html" class="btn">Chat with AI</a>
+            <a href="report.html" class="btn">Medical Report Generator</a>
         </div>
 
         <div class="box">
