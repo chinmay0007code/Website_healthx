@@ -3,93 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthX - AI Health Assistant</title>
+    <title>HealthX</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
             text-align: center;
         }
+
         .navbar {
             background-color: #007bff;
             padding: 10px;
-            color: white;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            gap: 15px;
         }
+
         .navbar a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
         }
+
         .container {
-            padding: 20px;
+            margin-top: 20px;
         }
-        .card {
-            background-color: #f8f9fa;
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+        h1 {
+            font-size: 24px;
         }
-        .button {
-            display: block;
-            width: 100%;
+
+        h2 {
+            color: #007bff;
+            font-size: 28px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        button {
+            width: 80%;  /* Reduced width */
+            max-width: 250px; /* Set max width */
+            padding: 10px 15px; /* Reduced padding */
+            font-size: 14px; /* Adjusted text size */
             background-color: #007bff;
             color: white;
             border: none;
-            padding: 10px;
-            margin: 10px 0;
             border-radius: 5px;
-            font-size: 16px;
             cursor: pointer;
-            text-decoration: none;
         }
-        .button:hover {
+
+        button:hover {
             background-color: #0056b3;
         }
-        .footer {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
+
+        .info-box {
+            background-color: #f8f9fa;
+            padding: 15px;
             margin-top: 20px;
-            font-size: 14px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .info-box h3 {
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="signup.html">Sign Up</a>
-        <a href="login.html">Login</a>
+        <a href="#">Home</a>
+        <a href="#">Sign Up</a>
+        <a href="#">Login</a>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
-        <h1>Welcome to <span style="color: #007bff;">HealthX</span></h1>
+        <h1>Welcome to</h1>
+        <h2>HealthX</h2>
         <p>Your AI-Powered Health Assistant</p>
 
-        <!-- Buttons -->
-        <a href="chatbot.html" class="button">Chat with AI</a>
-        <a href="medical_report.html" class="button">Medical Report</a>
+        <div class="buttons">
+            <button onclick="window.location.href='chatbot.html'">Chat with AI</button>
+            <button onclick="window.location.href='medical_report.html'">Medical Report</button>
+        </div>
 
-        <!-- How to Use Section -->
-        <div class="card">
-            <h2>How to Use HealthX</h2>
+        <div class="info-box">
+            <h3>How to Use HealthX</h3>
             <p>Welcome to HealthX, your AI-powered health assistant.</p>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        © 2024 HealthX. All Rights Reserved.
     </div>
 
 </body>
